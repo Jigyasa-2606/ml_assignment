@@ -1,9 +1,4 @@
-"""Train a CNN directly on image pixels.
 
-Usage:
-    python augment.py   # optional
-    python train.py
-"""
 
 import os
 import re
