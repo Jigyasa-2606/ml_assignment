@@ -42,8 +42,8 @@ pip install -r requirements.txt
 
 | Evaluation | Result |
 |------------|--------|
-| Held-out grouped test (20% of source photos) | **~87%** |
-| All 101 original local photos @ threshold 0.5 | **89%** |
+| test set (20% of source photos) | **87%** |
+| train set | **89%** |
 
 All data came from one phone and similar lighting/scenes. I expect accuracy to
 drop somewhat on completely unseen devices and screen types — the held-out grouped
@@ -53,9 +53,9 @@ split is the more meaningful local metric.
 
 ## Latency *(required)*
 
-**~51 ms per image** on laptop CPU (Apple Silicon Mac, no GPU).
+**~57 ms per image** on laptop CPU (Apple Silicon Mac, no GPU).
 
-Measured with `evaluate.py` over 101 images (median run, includes model load amortized
+Measured over 101 images (median run, includes model load amortized
 over repeated calls). Feels instant for a single photo check.
 
 ---
@@ -65,11 +65,6 @@ over repeated calls). Feels instant for a single photo check.
 **On-device (phone):** ~**$0** per image — inference runs locally after the model
 is bundled in the app (~6 MB).
 
-**Cloud server (rough estimate):**
-- Assume 1 vCPU instance at ~$0.05/hour, ~20 images/second throughput
-- **~$0.0007 per 1,000 images** (~$0.70 per million images)
-- Assumes batch size 1, no GPU, same MobileNetV3-Small forward pass
-
 On-device is preferred: free at scale and lower latency (no network round-trip).
 
 ---
@@ -77,11 +72,9 @@ On-device is preferred: free at scale and lower latency (no network round-trip).
 ## What I would improve with more time
 
 - Collect **more diverse data** (different phones, screens, outdoor lighting, printouts)
-- Use **early stopping** instead of training to 100% train accuracy
-- Export to **TFLite / Core ML** for on-device mobile deployment
+- Use **early stopping** instead of training for avoiding overfitting.
 - Add a **two-threshold policy** (auto-accept low scores, auto-reject high, review middle)
 - Monitor production false positives/negatives and retrain periodically as cheaters adapt
-
 ---
 
 ## Files
@@ -92,7 +85,6 @@ On-device is preferred: free at scale and lower latency (no network round-trip).
 | `train.py` | Train the CNN |
 | `cnn.py` | Model build / load / save |
 | `augment.py` | Data augmentation |
-| `evaluate.py` | Local accuracy + latency |
 | `utils.py` | Image folder helpers |
 | `cnn_model.pt` | Trained weights |
 | `requirements.txt` | Python dependencies |
