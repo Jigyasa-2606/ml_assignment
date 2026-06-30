@@ -1,11 +1,8 @@
 
 import sys
-
 import torch
 from PIL import Image
-
 from cnn import load_model
-
 _cache = None
 
 
