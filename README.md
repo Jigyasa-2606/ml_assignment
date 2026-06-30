@@ -83,7 +83,6 @@ On-device is preferred: free at scale and lower latency (no network round-trip).
 | `predict.py` | Run inference (required interface) |
 | `train.py` | Train the CNN |
 | `cnn.py` | Model build / load / save |
-| `augment.py` | Data augmentation |
 | `utils.py` | Image folder helpers |
 | `cnn_model.pt` | Trained weights |
 | `requirements.txt` | Python dependencies |
