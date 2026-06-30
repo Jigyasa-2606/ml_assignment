@@ -1,4 +1,3 @@
-"""Shared CNN model helpers for train.py and predict.py."""
 
 import os
 
@@ -6,6 +5,9 @@ import torch
 from torchvision import models
 from torchvision.models import MobileNet_V3_Small_Weights
 from torchvision.transforms import v2 as T
+
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+
 
 IMAGE_SIZE = 224
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "cnn_model.pt")
