@@ -19,6 +19,8 @@ from cnn import (
 )
 from utils import AUG_PREFIX, list_images
 
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+
 BATCH_SIZE = 16
 EPOCHS = 20
 LR = 1e-4
