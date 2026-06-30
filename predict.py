@@ -1,10 +1,3 @@
-"""Spot the fake photo: CNN trained on raw pixels.
-
-Usage:
-    python predict.py some_image.jpg
-Prints ONE number from 0 to 1:
-    0 = real photo,  1 = photo of a screen (recapture / fraud)
-"""
 
 import sys
 
