@@ -42,8 +42,7 @@ pip install -r requirements.txt
 
 | Evaluation | Result |
 |------------|--------|
-| test set (20% of source photos) | **87%** |
-| train set | **89%** |
+| test set (20% of source photos) | **83%** 
 
 All data came from one phone and similar lighting/scenes. I expect accuracy to
 drop somewhat on completely unseen devices and screen types — the held-out grouped
