@@ -4,6 +4,8 @@ import torch
 from PIL import Image
 from cnn import load_model
 _cache = None
+import os
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
 
 def predict(image_path: str) -> float:
